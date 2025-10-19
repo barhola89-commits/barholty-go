@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Liverpool vs Manchester United — Match Preview & How to Watch</title>
+
+  <!-- Monetag verification meta -->
+  <meta name="monetag" content="2b8a73a5f80912d1cfa704905bdf81f0">
+
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#fff;color:#111}
+    .container{max-width:800px;margin:36px auto;padding:20px}
+    header{border-bottom:1px solid #eee;padding-bottom:12px;margin-bottom:18px}
+    h1{font-size:24px;margin:0}
+    .meta{color:#666;font-size:14px;margin-top:6px}
+    article p{margin:12px 0;line-height:1.6}
+    .cta{margin-top:20px}
+    .btn{background:#c8102e;color:#fff;padding:10px 14px;border-radius:6px;text-decoration:none}
+    footer{border-top:1px solid #eee;margin-top:30px;padding:16px;color:#666;font-size:13px}
+    #overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;align-items:center;justify-content:center;z-index:9999;color:#fff;flex-direction:column}
+    #continueBtn{display:inline-block;padding:10px 16px;border-radius:6px;background:#4caf50;color:#fff;text-decoration:none;margin-top:12px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Liverpool vs Manchester United — Match Preview & How to Watch</h1>
+      <div class="meta">Kick-off: Today 18:30 EET • Quick preview & streaming tips</div>
+    </header>
+
+    <article>
+      <p><strong>Match preview:</strong> Liverpool face Manchester United in a classic Premier League rivalry. Expect high tempo and intense pressing from Liverpool, with United relying on counters and set-piece threats.</p>
+
+      <p><strong>Key players:</strong> Watch Liverpool's attacking trio and midfield press; United's wingers and aerial threats from corners.</p>
+
+      <h3>How to watch</h3>
+      <p>If the official broadcast is blocked in your region, a reliable VPN or regional streaming service usually solves it. Click "Watch Now" — we'll show a short ad then guide you to the best stream or offer for your country.</p>
+
+      <div class="cta">
+        <a class="btn" id="startBtn" href="#" onclick="openInterstitial();return false;">Watch Now</a>
+        <span style="margin-left:10px;color:#555">or wait a few seconds to be redirected automatically after the ad.</span>
+      </div>
+    </article>
+
+    <footer>
+      Informational page only. For privacy details <a href="/privacy.html">click here</a>.
+    </footer>
+  </div>
+
+  <div id="overlay">
+    <div>
+      <h2>Loading…</h2>
+      <p id="overlayText">Showing a short ad before redirecting to the best stream.</p>
+      <a id="continueBtn" href="#" style="display:none">Continue to Stream</a>
+    </div>
+  </div>
+
+  <!-- ============================
+       PASTE_MONETAG_SNIPPET_HERE
+       Replace with Monetag's exact interstitial snippet
+       ============================ -->
+  <script>
+    /* PASTE_MONETAG_SNIPPET_HERE */
+  </script>
+
+  <script>
+    const SMARTLINK = "SMARTLINK_HERE"; // <-- استبدل بالرابط الحقيقي
+
+    function showOverlay(){
+      document.getElementById('overlay').style.display = 'flex';
+      document.getElementById('overlayText').textContent = 'Showing ad — please wait...';
+      document.getElementById('continueBtn').style.display = 'none';
+    }
+    function hideOverlay(){
+      document.getElementById('overlay').style.display = 'none';
+    }
+
+    function openInterstitial(){
+      showOverlay();
+      // If Monetag needs a function call to show ad, call it here.
+      // Usually the Monetag snippet auto-runs or provides callback.
+    }
+
+    function onMonetagAdClosed(){
+      window.__monetagAdClosed = true;
+      hideOverlay();
+      window.location.href = SMARTLINK;
+    }
+
+    window.addEventListener('message', function(e){
+      try{ if(e.data && e.data.monetag === 'closed') onMonetagAdClosed(); }catch(err){}
+    }, false);
+
+    // fallback: show continue button after 4s
+    setTimeout(function(){
+      if(!window.__monetagAdClosed){
+        document.getElementById('overlayText').textContent = "If the ad didn't start, click continue to proceed.";
+        const c = document.getElementById('continueBtn');
+        c.style.display = 'inline-block';
+        c.href = SMARTLINK;
+        c.addEventListener('click', function(e){ e.preventDefault(); window.location.href = SMARTLINK; });
+      }
+    }, 4000);
+
+    // hard fallback redirect after 12s
+    setTimeout(function(){
+      if(!window.__monetagAdClosed) window.location.href = SMARTLINK;
+    }, 12000);
+
+    // optional: auto start
+    // window.addEventListener('load', openInterstitial);
+  </script>
+</body>
+</html>
