@@ -57,28 +57,30 @@
   </div>
 
   <!-- ============================
-       PASTE_MONETAG_SNIPPET_HERE
-       Replace with Monetag's exact interstitial snippet
+       Monetag Interstitial
        ============================ -->
   <script>
-<script>(function(s){s.dataset.zone='10063517',s.src='https://groleegni.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>  </script>
+    // إنشاء سكريبت Monetag Interstitial
+    (function(s){
+        s.dataset.zone='10063517';
+        s.src='https://groleegni.net/vignette.min.js';
+    })(document.body.appendChild(document.createElement('script')));
 
-  <script>
-    const SMARTLINK = "SMARTLINK_HERE"; // <-- استبدل بالرابط الحقيقي
+    const SMARTLINK = "https://otieu.com/4/9837675";
 
     function showOverlay(){
       document.getElementById('overlay').style.display = 'flex';
       document.getElementById('overlayText').textContent = 'Showing ad — please wait...';
       document.getElementById('continueBtn').style.display = 'none';
     }
+
     function hideOverlay(){
       document.getElementById('overlay').style.display = 'none';
     }
 
     function openInterstitial(){
       showOverlay();
-      // If Monetag needs a function call to show ad, call it here.
-      // Usually the Monetag snippet auto-runs or provides callback.
+      // Monetag snippet عادةً بيشتغل تلقائي، لو فيه callback ممكن تضيف هنا
     }
 
     function onMonetagAdClosed(){
@@ -106,9 +108,6 @@
     setTimeout(function(){
       if(!window.__monetagAdClosed) window.location.href = SMARTLINK;
     }, 12000);
-
-    // optional: auto start
-    // window.addEventListener('load', openInterstitial);
   </script>
 </body>
 </html>
