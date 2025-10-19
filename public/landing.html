@@ -56,9 +56,6 @@
     </div>
   </div>
 
-  <!-- ============================
-       Monetag Interstitial Optimized
-       ============================ -->
   <script>
     const SMARTLINK = "https://otieu.com/4/9837675";
 
@@ -75,39 +72,45 @@
     function openInterstitial(){
       showOverlay();
 
-      // Monetag Interstitial يبدأ فور الضغط
-      (function(s){
-          s.dataset.zone='10063517';
-          s.src='https://groleegni.net/vignette.min.js';
-      })(document.body.appendChild(document.createElement('script')));
+      // إضافة سكربت Monetag الرسمي
+      const monetagScript = document.createElement('script');
+      monetagScript.src = 'https://groleegni.net/vignette.min.js';
+      monetagScript.dataset.zone = '10063517';
+      monetagScript.async = true;
+      document.body.appendChild(monetagScript);
     }
 
     function onMonetagAdClosed(){
       window.__monetagAdClosed = true;
       hideOverlay();
+      // redirect آمن بعد الإعلان
       window.location.href = SMARTLINK;
     }
 
-    // الاستماع لرسائل Monetag
     window.addEventListener('message', function(e){
-      try{ if(e.data && e.data.monetag === 'closed') onMonetagAdClosed(); }catch(err){}
+      try{
+        if(e.data && e.data.monetag === 'closed') onMonetagAdClosed();
+      } catch(err){}
     }, false);
 
-    // زر Continue يظهر بعد 1.5 ثانية فقط
+    // زر Continue يظهر بعد 1.5 ثانية
     setTimeout(function(){
       if(!window.__monetagAdClosed){
         document.getElementById('overlayText').textContent = "If the ad didn't start, click continue to proceed.";
         const c = document.getElementById('continueBtn');
         c.style.display = 'inline-block';
         c.href = SMARTLINK;
-        c.addEventListener('click', function(e){ e.preventDefault(); window.location.href = SMARTLINK; });
+        c.addEventListener('click', function(e){
+          e.preventDefault();
+          window.location.href = SMARTLINK;
+        });
       }
     }, 1500);
 
-    // hard redirect بعد 8 ثواني
+    // hard redirect بعد 10 ثواني، متأخر شوي عن قبل عشان Monetag يسجل CPM
     setTimeout(function(){
       if(!window.__monetagAdClosed) window.location.href = SMARTLINK;
-    }, 8000);
+    }, 10000);
   </script>
 </body>
 </html>
