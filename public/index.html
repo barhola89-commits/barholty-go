@@ -21,12 +21,16 @@
     </p>
 
     <!-- كود 1: Vignette داخل المقالة -->
-    <div class="pop-container">
-        <script src="https://cdn.monetag.com/vignette.min.js"></script>
-        <script>
-            window.vignetteSettings = { zone: '123456' };
-        </script>
-    </div>
+    <div class="pop-container" id="vignette-container"></div>
+    <script>
+        window.vignetteSettings = { zone: '123456' };
+        (function(){
+            var s = document.createElement('script');
+            s.src = "https://cdn.monetag.com/vignette.min.js";
+            s.async = true;
+            document.body.appendChild(s);
+        })();
+    </script>
 
     <p>
         Manchester United will rely on their home advantage and key players to secure a win. Liverpool, 
@@ -34,16 +38,15 @@
     </p>
 
     <!-- كود 2: Smartlink داخل المقالة -->
-    <div class="pop-container">
-        <script>
-            (function(){ 
-                var s=document.createElement('script'); 
-                s.src='https://example.com/smartlink.js'; 
-                s.async=true; 
-                document.head.appendChild(s); 
-            })();
-        </script>
-    </div>
+    <div class="pop-container" id="smartlink-container"></div>
+    <script>
+        (function(){ 
+            var s = document.createElement('script'); 
+            s.src = 'https://example.com/smartlink.js'; 
+            s.async = true; 
+            document.body.appendChild(s); 
+        })();
+    </script>
 
     <p>
         Fans are eager to see if Manchester United can continue their winning streak or if Liverpool will turn the tables. 
