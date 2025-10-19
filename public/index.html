@@ -1,12 +1,85 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Barholty GO</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Landing Page</title>
+
+  <!-- Monetag verification meta -->
   <meta name="monetag" content="c6b3fb0dbcedd6dd70111683df31d3db">
+
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#fff;color:#111}
+    .container{max-width:800px;margin:36px auto;padding:20px;text-align:center}
+    .btn{background:#c8102e;color:#fff;padding:10px 16px;border-radius:6px;text-decoration:none}
+    #overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;align-items:center;justify-content:center;z-index:9999;color:#fff;flex-direction:column}
+    #continueBtn{display:inline-block;padding:10px 16px;border-radius:6px;background:#4caf50;color:#fff;text-decoration:none;margin-top:12px}
+  </style>
 </head>
 <body>
-  <h1>Welcome to Barholty GO</h1>
+  <div class="container">
+    <h1>Welcome to the page</h1>
+    <p>Click the button to watch content.</p>
+    <a class="btn" id="startBtn" href="#" onclick="openInterstitial();return false;">Watch Now</a>
+  </div>
+
+  <div id="overlay">
+    <div>
+      <h2>Loading…</h2>
+      <p id="overlayText">Showing a short ad before redirecting.</p>
+      <a id="continueBtn" href="#" style="display:none">Continue</a>
+    </div>
+  </div>
+
+  <script>
+    const SMARTLINK = "https://otieu.com/4/9837675";
+
+    function showOverlay(){
+      document.getElementById('overlay').style.display = 'flex';
+      document.getElementById('overlayText').textContent = 'Showing ad — please wait...';
+      document.getElementById('continueBtn').style.display = 'none';
+    }
+
+    function hideOverlay(){
+      document.getElementById('overlay').style.display = 'none';
+    }
+
+    function openInterstitial(){
+      showOverlay();
+
+      // Monetag Interstitial
+      (function(s){
+        s.dataset.zone='10063517';
+        s.src='https://groleegni.net/vignette.min.js';
+      })(document.body.appendChild(document.createElement('script')));
+    }
+
+    function onMonetagAdClosed(){
+      window.__monetagAdClosed = true;
+      hideOverlay();
+      window.location.href = SMARTLINK;
+    }
+
+    // الاستماع لرسائل Monetag
+    window.addEventListener('message', function(e){
+      try{ if(e.data && e.data.monetag === 'closed') onMonetagAdClosed(); }catch(err){}
+    }, false);
+
+    // زر Continue يظهر بعد 1.5 ثانية
+    setTimeout(function(){
+      if(!window.__monetagAdClosed){
+        document.getElementById('overlayText').textContent = "If the ad didn't start, click continue.";
+        const c = document.getElementById('continueBtn');
+        c.style.display = 'inline-block';
+        c.href = SMARTLINK;
+        c.addEventListener('click', function(e){ e.preventDefault(); window.location.href = SMARTLINK; });
+      }
+    }, 1500);
+
+    // Hard redirect بعد 8 ثواني
+    setTimeout(function(){
+      if(!window.__monetagAdClosed) window.location.href = SMARTLINK;
+    }, 8000);
+  </script>
 </body>
 </html>
