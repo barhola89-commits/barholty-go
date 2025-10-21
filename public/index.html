@@ -451,12 +451,10 @@
                     <p>"The midfield battle between Declan Rice and Atletico's engine room could be decisive. Rice's ability to break up play and initiate attacks will be crucial against Atletico's organized pressing system. This is exactly the type of high-pressure European night that Arsenal bought Rice for."</p>
                 </div>
                 
-                <!-- First Interstitial Ad Container -->
+                <!-- First Interstitial Ad -->
                 <div class="ad-container">
                     <div class="ad-label">Advertisement</div>
                     <div id="interstitialAd1" class="ad-placeholder">Loading interstitial ad...</div>
-                    <!-- Banner inside interstitial container -->
-                    <div id="bannerInInterstitial1" style="margin-top: 15px;"></div>
                 </div>
 
                 <!-- Desktop Banner Ad 3 -->
@@ -531,12 +529,10 @@
 
                 <p>Simeone, meanwhile, is a master of European knockout football. His ability to set up teams to be difficult to beat away from home, coupled with his skill in managing two-legged ties, gives Atletico a significant psychological advantage. The Argentine has eliminated more fancied opponents than any other active manager in the Champions League.</p>
                 
-                <!-- Second Interstitial Ad Container -->
+                <!-- Second Interstitial Ad -->
                 <div class="ad-container">
                     <div class="ad-label">Advertisement</div>
                     <div id="interstitialAd2" class="ad-placeholder">Loading interstitial ad...</div>
-                    <!-- Banner inside interstitial container -->
-                    <div id="bannerInInterstitial2" style="margin-top: 15px;"></div>
                 </div>
 
                 <!-- Desktop Banner Ad 5 -->
@@ -719,7 +715,7 @@
                 }
             },
             
-            // Adystra Banner Ads
+            // Banner Ads
             bannerAds: {
                 '728x90': {
                     key: '20957459041208d2568d0b068058c7ae',
@@ -744,40 +740,27 @@
             }
         };
 
-        // ULTRA FAST Ad Loading - Interstitial FIRST
+        // ULTRA FAST Ad Loading
         function loadAdsUltraFast() {
             console.log('⚡ Loading ads with maximum speed...');
             
-            // Step 1: Load Interstitial ads IMMEDIATELY (0ms delay)
-            loadInterstitialAdsFirst();
+            // Step 1: Load Monetag ads immediately
+            loadMonetagAds();
             
-            // Step 2: Load Monetag other ads quickly
-            setTimeout(loadMonetagOtherAds, 50);
-            
-            // Step 3: Load banner ads with minimal delay
+            // Step 2: Load banner ads with minimal delay
             setTimeout(loadBannerAds, 100);
             
-            // Step 4: Hide loading overlay quickly
+            // Step 3: Hide loading overlay quickly
             setTimeout(hideLoadingOverlay, 500);
         }
 
-        // Load Interstitial Ads FIRST
-        function loadInterstitialAdsFirst() {
-            console.log('🚀 Loading Interstitial ads FIRST...');
-            
-            // Load Interstitial 1
+        // Load Monetag Ads
+        function loadMonetagAds() {
+            // Load Interstitial
             loadMonetagAd('interstitialAd1', adConfig.monetagAds.interstitial);
             
-            // Load Interstitial 2  
-            setTimeout(() => {
-                loadMonetagAd('interstitialAd2', adConfig.monetagAds.interstitial);
-            }, 200);
-        }
-
-        // Load other Monetag Ads
-        function loadMonetagOtherAds() {
-            // Load Vignette
-            loadMonetagAd('vignetteAd', adConfig.monetagAds.vignette);
+            // Load Vignette  
+            loadMonetagAd('interstitialAd2', adConfig.monetagAds.vignette);
             
             // Load In-Page Push
             loadMonetagAd('inPagePushAd', adConfig.monetagAds.inPagePush);
@@ -809,10 +792,8 @@
             }
         }
 
-        // Load Banner Ads from Adystra
+        // Load Banner Ads
         function loadBannerAds() {
-            console.log('📱 Loading Adystra banner ads...');
-            
             // Desktop banners
             for (let i = 1; i <= 6; i++) {
                 loadBannerAd('desktopBannerAd' + i, getBannerSizeForDesktop(i));
@@ -827,14 +808,10 @@
             for (let i = 1; i <= 4; i++) {
                 loadBannerAd('sidebarBannerAd' + i, '300x250');
             }
-            
-            // Banners inside interstitial containers
-            loadBannerAd('bannerInInterstitial1', '468x60');
-            loadBannerAd('bannerInInterstitial2', '468x60');
         }
 
         function getBannerSizeForDesktop(index) {
-            const sizes = ['728x90', '468x60', '300x250', '728x90', '300x250', '468x60'];
+            const sizes = ['728x90', '300x250', '468x60', '728x90', '300x250', '468x60'];
             return sizes[index - 1] || '300x250';
         }
 
@@ -866,7 +843,7 @@
                 
                 loaderScript.onload = function() {
                     console.log(`✅ ${containerId} (${size}) loaded successfully`);
-                    const placeholder = container.querySelector ? container.querySelector('.ad-placeholder') : null;
+                    const placeholder = container.querySelector('.ad-placeholder');
                     if (placeholder) placeholder.style.display = 'none';
                 };
                 
@@ -899,7 +876,7 @@
             });
         }
 
-        // 🚀 START ADS IMMEDIATELY - Interstitial FIRST
+        // 🚀 START ADS IMMEDIATELY
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function() {
                 loadAdsUltraFast();
