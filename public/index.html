@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="61cb7e847ce027058f514844785c76dd8755e000" content="61cb7e847ce027058f514844785c76dd8755e000" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arsenal vs Atletico Madrid: Champions League Quarter-Final Preview</title>
@@ -274,6 +275,10 @@
             margin: 20px 0;
         }
         
+        .banner-ad.mobile-only {
+            display: none;
+        }
+        
         .prediction-box {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
@@ -316,6 +321,20 @@
                 align-items: center;
                 gap: 10px;
             }
+            
+            .banner-ad.mobile-only {
+                display: flex;
+            }
+            
+            .banner-ad.desktop-only {
+                display: none;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .banner-ad.mobile-only {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -343,17 +362,33 @@
     <div class="container">
         <div class="content">
             <main class="main-content">
+                <!-- Mobile Banner Ad 1 - Top of Content -->
+                <div class="banner-ad mobile-only">
+                    <div class="ad-container">
+                        <div class="ad-label">Advertisement</div>
+                        <div id="mobileBannerAd1" class="ad-placeholder">Loading mobile banner...</div>
+                    </div>
+                </div>
+
                 <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Champions League Football" class="article-img">
                 
                 <p>The Emirates Stadium prepares for one of its biggest European nights in years as Arsenal host Spanish giants Atletico Madrid in a tantalizing Champions League quarter-final first leg. With a place in the semi-finals at stake, both teams know this encounter could define their entire season.</p>
                 
-                <p>Mikel Arteta's young Gunners have taken the Premier League by storm this campaign, playing an exhilarating brand of football that has seen them challenge for domestic honors. However, the ultimate test of their progress comes on the European stage against the wily and experienced Atletico Madrid, managed by the master tactician Diego Simeone.</p>
-                
-                <!-- First Banner Ad - Mobile Only -->
+                <!-- Mobile Banner Ad 2 - After First Paragraph -->
                 <div class="banner-ad mobile-only">
                     <div class="ad-container">
                         <div class="ad-label">Advertisement</div>
-                        <div id="bannerAd1" class="ad-placeholder">Loading banner ad...</div>
+                        <div id="mobileBannerAd2" class="ad-placeholder">Loading mobile banner...</div>
+                    </div>
+                </div>
+
+                <p>Mikel Arteta's young Gunners have taken the Premier League by storm this campaign, playing an exhilarating brand of football that has seen them challenge for domestic honors. However, the ultimate test of their progress comes on the European stage against the wily and experienced Atletico Madrid, managed by the master tactician Diego Simeone.</p>
+                
+                <!-- Desktop Banner Ad 1 -->
+                <div class="banner-ad desktop-only">
+                    <div class="ad-container">
+                        <div class="ad-label">Advertisement</div>
+                        <div id="desktopBannerAd1" class="ad-placeholder">Loading desktop banner...</div>
                     </div>
                 </div>
                 
@@ -382,6 +417,14 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- Mobile Banner Ad 3 - After Lineups -->
+                <div class="banner-ad mobile-only">
+                    <div class="ad-container">
+                        <div class="ad-label">Advertisement</div>
+                        <div id="mobileBannerAd3" class="ad-placeholder">Loading mobile banner...</div>
+                    </div>
+                </div>
                 
                 <h2>Tactical Battle: Arteta's Philosophy vs Simeone's Pragmatism</h2>
                 
@@ -398,22 +441,46 @@
                     <div class="ad-label">Advertisement</div>
                     <div id="interstitialAd1" class="ad-placeholder">Loading interstitial ad...</div>
                 </div>
+
+                <!-- Desktop Banner Ad 2 -->
+                <div class="banner-ad desktop-only">
+                    <div class="ad-container">
+                        <div class="ad-label">Advertisement</div>
+                        <div id="desktopBannerAd2" class="ad-placeholder">Loading desktop banner...</div>
+                    </div>
+                </div>
                 
                 <h2>Key Player Battles That Could Decide the Match</h2>
                 
                 <p><strong>Bukayo Saka vs Marcos Llorente:</strong> Arsenal's talismanic winger against Atletico's experienced full-back. Saka's dribbling, creativity, and eye for goal will test Llorente's defensive capabilities throughout the match. The England international has been in scintillating form this season, directly contributing to 25 goals across all competitions.</p>
                 
+                <!-- Mobile Banner Ad 4 - Middle of Content -->
+                <div class="banner-ad mobile-only">
+                    <div class="ad-container">
+                        <div class="ad-label">Advertisement</div>
+                        <div id="mobileBannerAd4" class="ad-placeholder">Loading mobile banner...</div>
+                    </div>
+                </div>
+
                 <p><strong>Declan Rice vs Giovanni Simeone:</strong> A battle of physicality and tactical intelligence in the heart of midfield. Rice's ability to control the tempo and break up opposition attacks will be crucial against Simeone's disruptive presence and work rate. The Arsenal midfielder has completed more progressive passes than any other player in the Champions League this season.</p>
                 
                 <p><strong>William Saliba vs Antoine Griezmann:</strong> Arsenal's defensive rock against Atletico's creative genius. Saliba's pace, positioning, and composure will be tested by Griezmann's movement, vision, and ability to find space between the lines. The French defender has been virtually unbeatable in one-on-one situations this campaign.</p>
                 
                 <img src="https://images.unsplash.com/photo-1595347990546-9a11f6d8f8c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Football Tactics" class="article-img">
                 
-                <!-- Second Banner Ad - Desktop and Mobile -->
-                <div class="banner-ad">
+                <!-- Desktop Banner Ad 3 -->
+                <div class="banner-ad desktop-only">
                     <div class="ad-container">
                         <div class="ad-label">Advertisement</div>
-                        <div id="bannerAd2" class="ad-placeholder">Loading banner ad...</div>
+                        <div id="desktopBannerAd3" class="ad-placeholder">Loading desktop banner...</div>
+                    </div>
+                </div>
+
+                <!-- Mobile Banner Ad 5 - After Image -->
+                <div class="banner-ad mobile-only">
+                    <div class="ad-container">
+                        <div class="ad-label">Advertisement</div>
+                        <div id="mobileBannerAd5" class="ad-placeholder">Loading mobile banner...</div>
                     </div>
                 </div>
                 
@@ -429,6 +496,14 @@
                 
                 <p>Mikel Arteta has transformed Arsenal's mentality since taking over, instilling a winning culture and resilience that was previously missing. His attention to detail and emotional connection with his players has been instrumental in their development. However, this represents his biggest European test as a manager, facing a seasoned campaigner in Diego Simeone.</p>
                 
+                <!-- Mobile Banner Ad 6 - Middle of Content -->
+                <div class="banner-ad mobile-only">
+                    <div class="ad-container">
+                        <div class="ad-label">Advertisement</div>
+                        <div id="mobileBannerAd6" class="ad-placeholder">Loading mobile banner...</div>
+                    </div>
+                </div>
+
                 <p>Simeone, meanwhile, is a master of European knockout football. His ability to set up teams to be difficult to beat away from home, coupled with his skill in managing two-legged ties, gives Atletico a significant psychological advantage. The Argentine has eliminated more fancied opponents than any other active manager in the Champions League.</p>
                 
                 <!-- Second Interstitial Ad -->
@@ -436,18 +511,42 @@
                     <div class="ad-label">Advertisement</div>
                     <div id="interstitialAd2" class="ad-placeholder">Loading interstitial ad...</div>
                 </div>
+
+                <!-- Desktop Banner Ad 4 -->
+                <div class="banner-ad desktop-only">
+                    <div class="ad-container">
+                        <div class="ad-label">Advertisement</div>
+                        <div id="desktopBannerAd4" class="ad-placeholder">Loading desktop banner...</div>
+                    </div>
+                </div>
                 
                 <h2>Emirates Atmosphere and Home Advantage</h2>
                 
                 <p>The Emirates Stadium is expected to be at its electrifying best for this quarter-final clash. Arsenal fans have created a formidable atmosphere on European nights this season, particularly in the knockout stages. The home support could play a crucial role in unsettling an experienced Atletico side.</p>
                 
                 <p>However, Atletico Madrid are accustomed to hostile environments, having played in some of Europe's most intimidating stadiums. Their players' experience in high-pressure situations means they are unlikely to be overawed by the occasion. The first goal in this tie could be absolutely critical.</p>
+
+                <!-- Mobile Banner Ad 7 - Near Bottom -->
+                <div class="banner-ad mobile-only">
+                    <div class="ad-container">
+                        <div class="ad-label">Advertisement</div>
+                        <div id="mobileBannerAd7" class="ad-placeholder">Loading mobile banner...</div>
+                    </div>
+                </div>
                 
                 <div class="prediction-box">
                     <h3>Match Prediction</h3>
                     <p>This promises to be a fascinating tactical battle between two contrasting styles of football.</p>
                     <div class="prediction-score">Arsenal 2 - 1 Atletico Madrid</div>
                     <p>Arsenal's home advantage, current form, and attacking quality might just give them the edge in a tightly contested encounter. However, Atletico's European experience means they will likely still be in the tie heading back to Madrid.</p>
+                </div>
+
+                <!-- Mobile Banner Ad 8 - Bottom of Content -->
+                <div class="banner-ad mobile-only">
+                    <div class="ad-container">
+                        <div class="ad-label">Advertisement</div>
+                        <div id="mobileBannerAd8" class="ad-placeholder">Loading mobile banner...</div>
+                    </div>
                 </div>
                 
                 <div class="tags">
@@ -537,159 +636,136 @@
     <script>
         // Ad configuration
         const adConfig = {
-            banners: [
-                {
-                    id: 'bannerAd1',
-                    code: function(qxcco){
-                        var d = document,
-                            s = d.createElement('script'),
-                            l = d.scripts[d.scripts.length - 1];
-                        s.settings = qxcco || {};
-                        s.src = "\/\/starchy-button.com\/b.XsVEs\/drGxlj0IYnWHcN\/Lerm\/9_urZVUrlvkbPBTKYs2hOCD\/ID1wOVD\/IUt\/N\/jQYq4\/MRj_Ul4ZMFwf";
-                        s.async = true;
-                        s.referrerPolicy = 'no-referrer-when-downgrade';
-                        l.parentNode.insertBefore(s, l);
-                    }
+            mobileBanners: 8, // 8 mobile banner placements
+            desktopBanners: 4, // 4 desktop banner placements
+            interstitials: 2, // 2 interstitial ads
+            bannerCodes: [
+                // Mobile Banner Code (300x100)
+                function(qxcco){
+                    var d = document,
+                        s = d.createElement('script'),
+                        l = d.scripts[d.scripts.length - 1];
+                    s.settings = qxcco || {};
+                    s.src = "\/\/starchy-button.com\/b.XsVEs\/drGxlj0IYnWHcN\/Lerm\/9_urZVUrlvkbPBTKYs2hOCD\/ID1wOVD\/IUt\/N\/jQYq4\/MRj_Ul4ZMFwf";
+                    s.async = true;
+                    s.referrerPolicy = 'no-referrer-when-downgrade';
+                    l.parentNode.insertBefore(s, l);
                 },
-                {
-                    id: 'bannerAd2', 
-                    code: function(xfdctn){
-                        var d = document,
-                            s = d.createElement('script'),
-                            l = d.scripts[d.scripts.length - 1];
-                        s.settings = xfdctn || {};
-                        s.src = "\/\/starchy-button.com\/b.XGV\/shdRGolr0pYXWdcS\/-exmw9nu\/Z\/UrldkMPDTlYX2VOBD\/Ip1IOtD\/UJtSNYjAYI4UMVjSUy4XN\/gm";
-                        s.async = true;
-                        s.referrerPolicy = 'no-referrer-when-downgrade';
-                        l.parentNode.insertBefore(s, l);
-                    }
+                // Desktop Banner Code (300x250)
+                function(xfdctn){
+                    var d = document,
+                        s = d.createElement('script'),
+                        l = d.scripts[d.scripts.length - 1];
+                    s.settings = xfdctn || {};
+                    s.src = "\/\/starchy-button.com\/b.XGV\/shdRGolr0pYXWdcS\/-exmw9nu\/Z\/UrldkMPDTlYX2VOBD\/Ip1IOtD\/UJtSNYjAYI4UMVjSUy4XN\/gm";
+                    s.async = true;
+                    s.referrerPolicy = 'no-referrer-when-downgrade';
+                    l.parentNode.insertBefore(s, l);
                 }
             ],
-            interstitials: [
+            interstitialCodes: [
                 {
-                    id: 'interstitialAd1',
                     zone: '10063517',
                     src: 'https://groleegni.net/vignette.min.js'
                 },
                 {
-                    id: 'interstitialAd2',
                     zone: '10063679', 
                     src: 'https://gizokraijaw.net/vignette.min.js'
                 }
             ]
         };
 
-        // Function to load ads with optimized timing
-        function loadAds() {
-            // Load banners first (they're less intrusive)
-            loadBannerAds();
+        // Function to load interstitial ads FIRST and FAST
+        function loadInterstitialAdsFirst() {
+            console.log('Loading interstitial ads first...');
             
-            // Load interstitials with delay or on user interaction
-            setTimeout(loadInterstitialAds, 1500);
+            adConfig.interstitialCodes.forEach((interstitial, index) => {
+                try {
+                    (function(s){
+                        s.dataset.zone = interstitial.zone;
+                        s.src = interstitial.src;
+                        s.onerror = function() {
+                            console.log('Interstitial ad ' + (index + 1) + ' failed to load');
+                        };
+                        s.onload = function() {
+                            console.log('Interstitial ad ' + (index + 1) + ' loaded successfully');
+                            document.getElementById('interstitialAd' + (index + 1)).querySelector('.ad-placeholder').style.display = 'none';
+                        };
+                        const container = [document.documentElement, document.body].filter(Boolean).pop();
+                        if (container) {
+                            container.appendChild(s);
+                        }
+                    })(document.createElement('script'));
+                } catch (error) {
+                    console.error('Error loading interstitial ad:', error);
+                }
+            });
+        }
+
+        // Function to load banner ads
+        function loadBannerAds() {
+            console.log('Loading banner ads...');
             
-            // Hide loading overlay
+            // Load mobile banners
+            for (let i = 1; i <= adConfig.mobileBanners; i++) {
+                const adContainer = document.getElementById('mobileBannerAd' + i);
+                if (adContainer && window.innerWidth <= 768) {
+                    try {
+                        adConfig.bannerCodes[0]({});
+                        setTimeout(() => {
+                            if (adContainer.querySelector('.ad-placeholder')) {
+                                adContainer.querySelector('.ad-placeholder').style.display = 'none';
+                            }
+                        }, 1000);
+                    } catch (error) {
+                        console.error('Error loading mobile banner ' + i + ':', error);
+                    }
+                }
+            }
+            
+            // Load desktop banners
+            for (let i = 1; i <= adConfig.desktopBanners; i++) {
+                const adContainer = document.getElementById('desktopBannerAd' + i);
+                if (adContainer && window.innerWidth > 768) {
+                    try {
+                        adConfig.bannerCodes[1]({});
+                        setTimeout(() => {
+                            if (adContainer.querySelector('.ad-placeholder')) {
+                                adContainer.querySelector('.ad-placeholder').style.display = 'none';
+                            }
+                        }, 1000);
+                    } catch (error) {
+                        console.error('Error loading desktop banner ' + i + ':', error);
+                    }
+                }
+            }
+        }
+
+        // Main ad loading function
+        function loadAllAds() {
+            // Step 1: Load interstitial ads immediately (they load first)
+            loadInterstitialAdsFirst();
+            
+            // Step 2: Load banner ads after a very short delay
+            setTimeout(loadBannerAds, 500);
+            
+            // Step 3: Hide loading overlay
             setTimeout(() => {
                 document.getElementById('loadingOverlay').style.opacity = '0';
                 setTimeout(() => {
                     document.getElementById('loadingOverlay').style.display = 'none';
                 }, 300);
-            }, 1000);
+            }, 800);
         }
 
-        function loadBannerAds() {
-            // Load mobile banner (only show on mobile)
-            if (window.innerWidth <= 768) {
-                loadBannerAd(adConfig.banners[0]);
-            }
-            
-            // Load desktop/mobile banner
-            loadBannerAd(adConfig.banners[1]);
-        }
-
-        function loadBannerAd(bannerConfig) {
-            const adContainer = document.getElementById(bannerConfig.id);
-            if (!adContainer) return;
-            
-            const placeholder = adContainer;
-            
-            try {
-                bannerConfig.code({});
-                // Hide placeholder after a short time
-                setTimeout(() => {
-                    if (adContainer.querySelector('.ad-placeholder')) {
-                        adContainer.querySelector('.ad-placeholder').style.display = 'none';
-                    }
-                }, 2000);
-            } catch (error) {
-                console.error('Error loading banner ad:', error);
-                if (adContainer.querySelector('.ad-placeholder')) {
-                    adContainer.querySelector('.ad-placeholder').textContent = 'Ad failed to load';
-                }
-            }
-        }
-
-        function loadInterstitialAds() {
-            adConfig.interstitials.forEach((interstitial, index) => {
-                // Stagger loading of interstitials
-                setTimeout(() => {
-                    loadInterstitialAd(interstitial);
-                }, index * 1000);
-            });
-        }
-
-        function loadInterstitialAd(interstitialConfig) {
-            const adContainer = document.getElementById(interstitialConfig.id);
-            if (!adContainer) return;
-            
-            const placeholder = adContainer;
-            
-            try {
-                (function(s){
-                    s.dataset.zone = interstitialConfig.zone;
-                    s.src = interstitialConfig.src;
-                    s.onerror = function() {
-                        if (adContainer.querySelector('.ad-placeholder')) {
-                            adContainer.querySelector('.ad-placeholder').textContent = 'Ad blocked or failed to load';
-                        }
-                    };
-                    s.onload = function() {
-                        if (adContainer.querySelector('.ad-placeholder')) {
-                            adContainer.querySelector('.ad-placeholder').style.display = 'none';
-                        }
-                    };
-                    const container = [document.documentElement, document.body].filter(Boolean).pop();
-                    if (container) {
-                        container.appendChild(s);
-                    }
-                })(document.createElement('script'));
-            } catch (error) {
-                console.error('Error loading interstitial ad:', error);
-                if (adContainer.querySelector('.ad-placeholder')) {
-                    adContainer.querySelector('.ad-placeholder').textContent = 'Ad failed to load';
-                }
-            }
-        }
-
-        // Mobile detection
-        function isMobile() {
-            return window.innerWidth <= 768;
-        }
-
-        // Add mobile-only class for CSS targeting
-        if (isMobile()) {
-            document.querySelector('.mobile-only').style.display = 'block';
-        } else {
-            document.querySelector('.mobile-only').style.display = 'none';
-        }
-
-        // Load ads when DOM is ready
+        // Load ads immediately when script executes
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', loadAds);
+            document.addEventListener('DOMContentLoaded', loadAllAds);
         } else {
-            loadAds();
+            loadAllAds();
         }
 
-        // Load ads on user interaction as fallback
+        // Also load ads on any user interaction (as backup)
         let userInteracted = false;
         const interactionEvents = ['click', 'scroll', 'touchstart', 'mousemove', 'keydown'];
         
@@ -697,17 +773,13 @@
             document.addEventListener(event, () => {
                 if (!userInteracted) {
                     userInteracted = true;
-                    loadAds();
+                    loadAllAds();
                 }
             }, { once: true, passive: true });
         });
 
-        // Fallback: Load ads after 3 seconds if no interaction
-        setTimeout(() => {
-            if (!userInteracted) {
-                loadAds();
-            }
-        }, 3000);
+        // Final fallback: Load ads after 2 seconds max
+        setTimeout(loadAllAds, 2000);
     </script>
 </body>
 </html>
