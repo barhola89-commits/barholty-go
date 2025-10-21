@@ -697,198 +697,212 @@
     </footer>
 
     <script>
-        // Ad configuration for maximum performance
-        const adConfig = {
-            // Monetag Ads
-            monetagAds: {
-                interstitial: {
-                    zone: '10063517',
-                    src: 'https://groleegni.net/vignette.min.js'
-                },
-                vignette: {
-                    zone: '10063679',
-                    src: 'https://gizokraijaw.net/vignette.min.js'
-                },
-                inPagePush: {
-                    zone: '10073561',
-                    src: 'https://forfrogadiertor.com/tag.min.js'
-                }
+    // Ad configuration for maximum performance
+    const adConfig = {
+        // Monetag Ads
+        monetagAds: {
+            interstitial: {
+                zone: '10063517',
+                src: 'https://groleegni.net/vignette.min.js'
             },
-            
-            // Banner Ads
-            bannerAds: {
-                '728x90': {
-                    key: '20957459041208d2568d0b068058c7ae',
-                    height: 90,
-                    width: 728
-                },
-                '468x60': {
-                    key: '1f56c4c6e15a137ffe0070f102d967cf',
-                    height: 60,
-                    width: 468
-                },
-                '300x250': {
-                    key: '78aa3677fad3fa65bc1e69d51aa6b95c',
-                    height: 250,
-                    width: 300
-                },
-                '320x50': {
-                    key: 'fb892c96e63f9478f2af76ad2fe5c0ad',
-                    height: 50,
-                    width: 320
-                }
+            vignette: {
+                zone: '10063679',
+                src: 'https://gizokraijaw.net/vignette.min.js'
+            },
+            inPagePush: {
+                zone: '10073561',
+                src: 'https://forfrogadiertor.com/tag.min.js'
             }
-        };
-
-        // ULTRA FAST Ad Loading
-        function loadAdsUltraFast() {
-            console.log('⚡ Loading ads with maximum speed...');
-            
-            // Step 1: Load Monetag ads immediately
-            loadMonetagAds();
-            
-            // Step 2: Load banner ads with minimal delay
-            setTimeout(loadBannerAds, 100);
-            
-            // Step 3: Hide loading overlay quickly
-            setTimeout(hideLoadingOverlay, 500);
+        },
+        
+        // Banner Ads
+        bannerAds: {
+            '728x90': {
+                key: '20957459041208d2568d0b068058c7ae',
+                height: 90,
+                width: 728
+            },
+            '468x60': {
+                key: '1f56c4c6e15a137ffe0070f102d967cf',
+                height: 60,
+                width: 468
+            },
+            '300x250': {
+                key: '78aa3677fad3fa65bc1e69d51aa6b95c',
+                height: 250,
+                width: 300
+            },
+            '320x50': {
+                key: 'fb892c96e63f9478f2af76ad2fe5c0ad',
+                height: 50,
+                width: 320
+            }
         }
+    };
 
-        // Load Monetag Ads
-        function loadMonetagAds() {
-            // Load Interstitial
-            loadMonetagAd('interstitialAd1', adConfig.monetagAds.interstitial);
-            
-            // Load Vignette  
+    // ULTRA FAST Ad Loading - Monetag FIRST
+    function loadAdsUltraFast() {
+        console.log('⚡ Loading MONETAG ads FIRST...');
+        
+        // Step 1: Load Monetag ads IMMEDIATELY (0ms delay)
+        loadMonetagAds();
+        
+        // Step 2: Load banner ads with MORE DELAY
+        setTimeout(loadBannerAds, 500);
+        
+        // Step 3: Hide loading overlay 
+        setTimeout(hideLoadingOverlay, 800);
+    }
+
+    // Load Monetag Ads - PRIORITY
+    function loadMonetagAds() {
+        console.log('🚀 Loading Monetag ads with priority...');
+        
+        // Load Interstitial FIRST
+        loadMonetagAd('interstitialAd1', adConfig.monetagAds.interstitial);
+        
+        // Load Vignette SECOND (بعد 100ms)
+        setTimeout(() => {
             loadMonetagAd('interstitialAd2', adConfig.monetagAds.vignette);
-            
-            // Load In-Page Push
+        }, 100);
+        
+        // Load In-Page Push THIRD (بعد 200ms)
+        setTimeout(() => {
             loadMonetagAd('inPagePushAd', adConfig.monetagAds.inPagePush);
-        }
+        }, 200);
+    }
 
-        function loadMonetagAd(containerId, adConfig) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
+    function loadMonetagAd(containerId, adConfig) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        try {
+            const script = document.createElement('script');
+            script.dataset.zone = adConfig.zone;
+            script.src = adConfig.src;
+            script.async = true;
             
-            try {
-                const script = document.createElement('script');
-                script.dataset.zone = adConfig.zone;
-                script.src = adConfig.src;
-                script.async = true;
-                
-                script.onload = function() {
-                    console.log(`✅ ${containerId} loaded successfully`);
-                    const placeholder = container.querySelector('.ad-placeholder');
-                    if (placeholder) placeholder.style.display = 'none';
-                };
-                
-                script.onerror = function() {
-                    console.log(`❌ ${containerId} failed to load`);
-                };
-                
-                container.appendChild(script);
-            } catch (error) {
-                console.error('Error loading Monetag ad:', error);
-            }
+            script.onload = function() {
+                console.log(`✅ ${containerId} loaded successfully`);
+                const placeholder = container.querySelector('.ad-placeholder');
+                if (placeholder) placeholder.style.display = 'none';
+            };
+            
+            script.onerror = function() {
+                console.log(`❌ ${containerId} failed to load`);
+            };
+            
+            container.appendChild(script);
+        } catch (error) {
+            console.error('Error loading Monetag ad:', error);
         }
+    }
 
-        // Load Banner Ads
-        function loadBannerAds() {
-            // Desktop banners
-            for (let i = 1; i <= 6; i++) {
+    // Load Banner Ads - AFTER Monetag
+    function loadBannerAds() {
+        console.log('📱 Loading Adystra banner ads AFTER Monetag...');
+        
+        // Desktop banners
+        for (let i = 1; i <= 6; i++) {
+            setTimeout(() => {
                 loadBannerAd('desktopBannerAd' + i, getBannerSizeForDesktop(i));
-            }
-            
-            // Mobile banners
-            for (let i = 1; i <= 10; i++) {
+            }, i * 100);
+        }
+        
+        // Mobile banners
+        for (let i = 1; i <= 10; i++) {
+            setTimeout(() => {
                 loadBannerAd('mobileBannerAd' + i, '320x50');
-            }
-            
-            // Sidebar banners
-            for (let i = 1; i <= 4; i++) {
+            }, i * 100);
+        }
+        
+        // Sidebar banners
+        for (let i = 1; i <= 4; i++) {
+            setTimeout(() => {
                 loadBannerAd('sidebarBannerAd' + i, '300x250');
-            }
+            }, i * 100);
         }
+    }
 
-        function getBannerSizeForDesktop(index) {
-            const sizes = ['728x90', '300x250', '468x60', '728x90', '300x250', '468x60'];
-            return sizes[index - 1] || '300x250';
-        }
+    function getBannerSizeForDesktop(index) {
+        const sizes = ['728x90', '300x250', '468x60', '728x90', '300x250', '468x60'];
+        return sizes[index - 1] || '300x250';
+    }
 
-        function loadBannerAd(containerId, size) {
-            const container = document.getElementById(containerId);
-            if (!container || !adConfig.bannerAds[size]) return;
+    function loadBannerAd(containerId, size) {
+        const container = document.getElementById(containerId);
+        if (!container || !adConfig.bannerAds[size]) return;
+        
+        try {
+            const bannerConfig = adConfig.bannerAds[size];
             
-            try {
-                const bannerConfig = adConfig.bannerAds[size];
-                
-                // Create configuration script
-                const configScript = document.createElement('script');
-                configScript.type = 'text/javascript';
-                configScript.innerHTML = `
-                    atOptions = {
-                        'key' : '${bannerConfig.key}',
-                        'format' : 'iframe',
-                        'height' : ${bannerConfig.height},
-                        'width' : ${bannerConfig.width},
-                        'params' : {}
-                    };
-                `;
-                
-                // Create loader script
-                const loaderScript = document.createElement('script');
-                loaderScript.type = 'text/javascript';
-                loaderScript.src = `//www.highperformanceformat.com/${bannerConfig.key}/invoke.js`;
-                loaderScript.async = true;
-                
-                loaderScript.onload = function() {
-                    console.log(`✅ ${containerId} (${size}) loaded successfully`);
-                    const placeholder = container.querySelector('.ad-placeholder');
-                    if (placeholder) placeholder.style.display = 'none';
+            // Create configuration script
+            const configScript = document.createElement('script');
+            configScript.type = 'text/javascript';
+            configScript.innerHTML = `
+                atOptions = {
+                    'key' : '${bannerConfig.key}',
+                    'format' : 'iframe',
+                    'height' : ${bannerConfig.height},
+                    'width' : ${bannerConfig.width},
+                    'params' : {}
                 };
-                
-                container.appendChild(configScript);
-                container.appendChild(loaderScript);
-                
-            } catch (error) {
-                console.error('Error loading banner ad:', error);
-            }
+            `;
+            
+            // Create loader script
+            const loaderScript = document.createElement('script');
+            loaderScript.type = 'text/javascript';
+            loaderScript.src = `//www.highperformanceformat.com/${bannerConfig.key}/invoke.js`;
+            loaderScript.async = true;
+            
+            loaderScript.onload = function() {
+                console.log(`✅ ${containerId} (${size}) loaded successfully`);
+                const placeholder = container.querySelector('.ad-placeholder');
+                if (placeholder) placeholder.style.display = 'none';
+            };
+            
+            container.appendChild(configScript);
+            container.appendChild(loaderScript);
+            
+        } catch (error) {
+            console.error('Error loading banner ad:', error);
         }
+    }
 
-        function hideLoadingOverlay() {
-            const loadingOverlay = document.getElementById('loadingOverlay');
-            if (loadingOverlay) {
-                loadingOverlay.style.opacity = '0';
-                setTimeout(() => {
-                    loadingOverlay.style.display = 'none';
-                }, 300);
-            }
+    function hideLoadingOverlay() {
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        if (loadingOverlay) {
+            loadingOverlay.style.opacity = '0';
+            setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+            }, 300);
         }
+    }
 
-        // Add onclick functionality to links
-        function setupOnclickAds() {
-            const adLinks = document.querySelectorAll('.ad-link');
-            adLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    // This would typically trigger a popunder ad
-                    console.log('Onclick ad triggered');
-                });
+    // Add onclick functionality to links
+    function setupOnclickAds() {
+        const adLinks = document.querySelectorAll('.ad-link');
+        adLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // This would typically trigger a popunder ad
+                console.log('Onclick ad triggered');
             });
-        }
+        });
+    }
 
-        // 🚀 START ADS IMMEDIATELY
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-                loadAdsUltraFast();
-                setupOnclickAds();
-            });
-        } else {
+    // 🚀 START ADS IMMEDIATELY - Monetag FIRST
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
             loadAdsUltraFast();
             setupOnclickAds();
-        }
+        });
+    } else {
+        loadAdsUltraFast();
+        setupOnclickAds();
+    }
 
-        // Final fallback
-        setTimeout(loadAdsUltraFast, 1000);
-    </script>
+    // Final fallback
+    setTimeout(loadAdsUltraFast, 1500);
+</script>
 </body>
 </html>
